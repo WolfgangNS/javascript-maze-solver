@@ -17,7 +17,7 @@ end:[3,3],
 
 solve:function(r,c,p){
 if(d<=0){return "recursion error!"}else{d--;}
-if(c>this.w-1|r>this.h-1|c<0|r<0){return false};
+if(c>this.w()-1|r>this.h()-1|c<0|r<0){return false};
 if(contains(p,[r,c])){return false};
 if(this.map[r][c]!=0){return false};
 p.push([r,c]);
@@ -29,5 +29,5 @@ if(a=this.solve(r-1,c,p)){return [[r,c]].concat(a)};
 return false;
 }
 }
-var d = 40;
+var d = maze.w()*maze.h();
 console.log(maze.solve(0,0,[]));
