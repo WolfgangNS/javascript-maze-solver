@@ -32,14 +32,14 @@ var maze =
 ],
 h:function(){return this.map.length},
 w:function(){return this.map[0].length},
-end:[23,15],
+end:[15,22],
 
 solve:function(r,c){
-//if(d<=0){return "recursion error!"}else{d--;}
+if(d<=0){console.log("recursion error!");return []}else{d--;}
 if(c>this.w()-1|r>this.h()-1|c<0|r<0){return false};
 if(this.map[r][c]!=0){return false};
 if(contains(p,[r,c])){return false};
-p.concat([[r,c]]); //concat or push??
+p = p.concat([[r,c]]); //concat or push??
 if(contains([this.end],[r,c])){return [[r,c]]};
 if(a=this.solve(r,c+1)){return [[r,c]].concat(a)};
 if(a=this.solve(r+1,c)){return [[r,c]].concat(a)};
@@ -49,6 +49,6 @@ return false;
 }
 }
 var p = [];
-//var d = 2*maze.w()*maze.h()+20;
+var d = 1000;
 var solution = maze.solve(0,0);
 console.log(solution);
