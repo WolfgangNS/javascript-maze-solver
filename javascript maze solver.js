@@ -1,3 +1,6 @@
+var p = [];
+var d = 1000;
+
 function contains(list,item){
 for(i=0;i<list.length;i++){
 if(list[i][0]==item[0]&&list[i][1]==item[1]){return true};
@@ -48,7 +51,31 @@ if(a=this.solve(r-1,c)){return [[r,c]].concat(a)};
 return false;
 }
 }
-var p = [];
-var d = 1000;
+
+
+function script(){
+var table = document.getElementById("table");
+while(table.firstChild){table.removeChild(table.firstChild);}
+var row = [];
+
+for(q=0;q<maze.h();q++){
+row[q] = document.createElement("tr");
+table.appendChild(row[q]);
+for(r=0;r<maze.w();r++){row[q].appendChild(document.createElement("td"))};
+}
+
+//SETTING WALL COLOR
+for(v=0;v<maze.h();v++){for(w=0;w<maze.w();w++){
+if(maze.map[v][w]==1){document.getElementsByTagName("tr")[v].getElementsByTagName("td")[w].style.backgroundColor="black"}
+}}
+
+}//end script()
+
+
+function solve(){
 var solution = maze.solve(0,0);
-console.log(solution);
+//SETTING PATHWAY COLOR
+for(v=0;v<solution.length;v++){
+document.getElementsByTagName("tr")[solution[v][0]].getElementsByTagName("td")[solution[v][1]].style.backgroundColor="chartreuse"
+}
+}
